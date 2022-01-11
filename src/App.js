@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Card from "./components/Card";
 
@@ -29,6 +29,28 @@ function App() {
   // handle a choice
   const handleChoice = (card) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+  };
+
+  //compare the two selected cards
+
+  //useEffect body code will fire initially  when the component first mountsthen, then  everytime when dependencies get changed, values of [choiceOne && choiceTwo]
+  useEffect(() => {
+    if (choiceOne && choiceTwo) {
+      if (choiceOne.src === choiceTwo.src) {
+        console.log("they the same");
+        resetTurn();
+      } else {
+        console.log("they are differ");
+        resetTurn();
+      }
+    }
+  }, [choiceOne, choiceTwo]);
+
+  //reset choices & increase turn
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns((prevTurns) => prevTurns + 1);
   };
 
   return (
