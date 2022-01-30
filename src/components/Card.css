@@ -28,3 +28,7 @@
   transform: rotateY(90deg);
   transition-delay: 0s;
 }
+img {
+padding: 5px;
+background-color: rgb(191, 156, 91);
+}

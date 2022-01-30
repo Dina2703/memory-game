@@ -10,7 +10,7 @@ function Card({ card, handleChoice, flipped, disabled }) {
 
         <img
           className="back"
-          src="/img/cover.png"
+          src="/img/smiley.png"
           alt="card cover"
           onClick={handleClick}
         />
