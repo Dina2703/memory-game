@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Confetti from "react-confetti";
+
 import "./App.css";
 import Card from "./components/Card";
 
@@ -16,6 +18,7 @@ function App() {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
+  const [confettiStage, setConfettiStage] = useState(false);
 
   //shuffle cards
   const shuffleCards = () => {
@@ -65,6 +68,11 @@ function App() {
     setDisabled(false);
   };
 
+  const confettiParty = () => {
+    setConfettiStage(true);
+    setTimeout(() => setConfettiStage(false), 10000);
+  };
+
   //start a new game automatically
 
   useEffect(() => {
@@ -73,8 +81,11 @@ function App() {
 
   return (
     <div className="App">
+      {confettiStage && (
+        <Confetti width={window.width} height={window.height} />
+      )}
       <h1>Игра на запоминание</h1>
-      <button onClick={shuffleCards}>Новая игра</button>
+      <button onClick={shuffleCards && confettiParty}>Новая игра</button>
 
       <div className="card-grid">
         {cards.map((card) => (
