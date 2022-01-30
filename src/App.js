@@ -73,8 +73,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Memory Game</h1>
-      <button onClick={shuffleCards}>New Game</button>
+      <h1>Игра на запоминание</h1>
+      <button onClick={shuffleCards}>Новая игра</button>
 
       <div className="card-grid">
         {cards.map((card) => (
