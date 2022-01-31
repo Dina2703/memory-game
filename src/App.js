@@ -68,10 +68,10 @@ function App() {
     setDisabled(false);
   };
 
-  const confettiParty = () => {
-    setConfettiStage(true);
-    setTimeout(() => setConfettiStage(false), 5000);
-  };
+  // const confettiParty = () => {
+  //   setConfettiStage(true);
+  //   setTimeout(() => setConfettiStage(false), 5000);
+  // };
 
   //start a new game automatically
 
@@ -81,11 +81,8 @@ function App() {
 
   return (
     <div className="App">
-      {confettiStage && (
-        <Confetti width={window.width} height={window.height} />
-      )}
       <h1>Игра на запоминание</h1>
-      <button onClick={shuffleCards && confettiParty}>Новая игра</button>
+      <button onClick={shuffleCards}>Новая игра</button>
 
       <div className="card-grid">
         {cards.map((card) => (
