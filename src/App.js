@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Confetti from "react-confetti";
+
 
 import "./App.css";
 import Card from "./components/Card";
@@ -18,7 +18,7 @@ function App() {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
-  const [confettiStage, setConfettiStage] = useState(false);
+ 
 
   //shuffle cards
   const shuffleCards = () => {
@@ -68,10 +68,6 @@ function App() {
     setDisabled(false);
   };
 
-  // const confettiParty = () => {
-  //   setConfettiStage(true);
-  //   setTimeout(() => setConfettiStage(false), 5000);
-  // };
 
   //start a new game automatically
 
