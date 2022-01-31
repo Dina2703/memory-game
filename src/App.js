@@ -70,7 +70,7 @@ function App() {
 
   const confettiParty = () => {
     setConfettiStage(true);
-    setTimeout(() => setConfettiStage(false), 10000);
+    setTimeout(() => setConfettiStage(false), 5000);
   };
 
   //start a new game automatically
