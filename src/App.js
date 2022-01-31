@@ -23,7 +23,6 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const [confettiStage, setConfettiStage] = useState(false);
 
-
   //shuffle cards
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -63,14 +62,13 @@ function App() {
     }
   }, [choiceOne, choiceTwo]);
 
-
-
   // console.log(cards);
   useEffect(() => {
     const check = cards.filter((card) => card.matched === true);
     if (check.length === 12) {
       console.log("all matched");
       setConfettiStage(true);
+      setTimeout(() => setConfettiStage(false), 8000);
     }
   }, [cards]);
 
