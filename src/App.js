@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import Confetti from "react-confetti";
 
 import "./App.css";
 import Card from "./components/Card";
@@ -12,13 +12,17 @@ const cardImages = [
   { src: "/img/shield-2.png", matched: false },
   { src: "/img/sword-2.png", matched: false },
 ];
+
+// const audioTune = new Audio("./audio/apllause.mp3");
+
 function App() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
- 
+  const [confettiStage, setConfettiStage] = useState(false);
+
 
   //shuffle cards
   const shuffleCards = () => {
@@ -29,6 +33,7 @@ function App() {
     setChoiceTwo(null);
     setCards(shuffledCards);
     setTurns(0);
+    setConfettiStage(false);
   };
 
   // handle a choice
@@ -58,7 +63,16 @@ function App() {
     }
   }, [choiceOne, choiceTwo]);
 
-  console.log(cards);
+
+
+  // console.log(cards);
+  useEffect(() => {
+    const check = cards.filter((card) => card.matched === true);
+    if (check.length === 12) {
+      console.log("all matched");
+      setConfettiStage(true);
+    }
+  }, [cards]);
 
   //reset choices & increase turn
   const resetTurn = () => {
@@ -66,8 +80,8 @@ function App() {
     setChoiceTwo(null);
     setTurns((prevTurns) => prevTurns + 1);
     setDisabled(false);
+    setConfettiStage(false);
   };
-
 
   //start a new game automatically
 
@@ -77,6 +91,9 @@ function App() {
 
   return (
     <div className="App">
+      {confettiStage && (
+        <Confetti width={window.width} height={window.height} />
+      )}
       <h1>Игра на запоминание</h1>
       <button onClick={shuffleCards}>Новая игра</button>
 
