@@ -3,7 +3,8 @@ import useSound from "use-sound";
 import Confetti from "react-confetti";
 import "./App.css";
 import Card from "./components/Card";
-import applauseSound from "./audio/main.mp3";
+import mainMusic from "./audio/main.mp3";
+import {SiApplemusic } from 'react-icons/si';
 
 const cardImages = [
   { src: "./img/potion-2.png", matched: false },
@@ -16,12 +17,12 @@ const cardImages = [
 
 // const audioTune = new Audio("./audio/apllause.mp3");
 const MyButton = () => {
-  const [play, { stop }] = useSound(applauseSound);
+  const [play, { stop }] = useSound(mainMusic);
 
   return (
-    <button onClick={() => play()} onDoubleClick={() => stop()}>
-      Play Sound
-    </button>
+    <span onClick={() => play()} onDoubleClick={() => stop()} style={{'margin-left': '.5em', 'border': 'none'}} >
+     <SiApplemusic />
+    </span>
   );
 };
 
@@ -104,7 +105,7 @@ function App() {
       )}
       <h1>Игра на запоминание</h1>
       <button onClick={shuffleCards}>Новая игра</button>
-
+      <MyButton />
       <div className="card-grid">
         {cards.map((card) => (
           <Card
@@ -117,7 +118,7 @@ function App() {
         ))}
       </div>
       <p>Turns: {turns}</p>
-      <MyButton />
+     
     </div>
   );
 }
