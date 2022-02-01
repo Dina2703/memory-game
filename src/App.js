@@ -5,17 +5,22 @@ import { FaSpinner } from "react-icons/fa";
 import "./App.css";
 import Card from "./components/Card";
 import mainMusic from "./audio/main.mp3";
-
 import { MdOutlineMusicOff, MdOutlineMusicNote } from "react-icons/md";
 
+
+
+const photo = 1;
+
 const cardImages = [
-  { src: "./img/potion-2.png", matched: false },
-  { src: "./img/helmet-2.png", matched: false },
-  { src: "/img/ring-2.png", matched: false },
-  { src: "/img/scroll-2.png", matched: false },
-  { src: "/img/shield-2.png", matched: false },
-  { src: "/img/sword-2.png", matched: false },
+  { src: `./img/potion-${photo}.png`, matched: false },
+  { src: `./img/helmet-${photo}.png`, matched: false },
+  { src: `/img/ring-${photo}.png`, matched: false },
+  { src: `/img/scroll-${photo}.png`, matched: false },
+  { src: `/img/shield-${photo}.png`, matched: false },
+  { src: `/img/sword-${photo}.png`, matched: false },
 ];
+
+
 
 // const audioTune = new Audio("./audio/apllause.mp3");
 const MyButton = () => {
@@ -27,17 +32,13 @@ const MyButton = () => {
         display: "inline-block",
         background: "#b94e72",
         marginLeft: "26px",
-
       }}
     >
-      <span onClick={() => play()} >
+      <span onClick={() => play()}>
         <MdOutlineMusicNote style={{ padding: "2px" }} />
       </span>
-      <span
-        onClick={() => stop()}
-        style={{ border: "none" }}
-      >
-        <MdOutlineMusicOff style={{ padding: "2px" }}/>
+      <span onClick={() => stop()} style={{ border: "none" }}>
+        <MdOutlineMusicOff style={{ padding: "2px" }} />
       </span>
     </div>
   );
