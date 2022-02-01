@@ -5,7 +5,8 @@ import { FaSpinner } from "react-icons/fa";
 import "./App.css";
 import Card from "./components/Card";
 import mainMusic from "./audio/main.mp3";
-import { SiApplemusic } from "react-icons/si";
+
+import { MdOutlineMusicOff, MdOutlineMusicNote } from "react-icons/md";
 
 const cardImages = [
   { src: "./img/potion-2.png", matched: false },
@@ -21,13 +22,24 @@ const MyButton = () => {
   const [play, { stop }] = useSound(mainMusic);
 
   return (
-    <span
-      onClick={() => play()}
-      onMouseDown={() => stop()}
-      style={{ "margin-left": ".5em", border: "none" }}
+    <div
+      style={{
+        display: "inline-block",
+        background: "#b94e72",
+        marginLeft: "26px",
+
+      }}
     >
-      <SiApplemusic />
-    </span>
+      <span onClick={() => play()} >
+        <MdOutlineMusicNote style={{ padding: "2px" }} />
+      </span>
+      <span
+        onClick={() => stop()}
+        style={{ border: "none" }}
+      >
+        <MdOutlineMusicOff style={{ padding: "2px" }}/>
+      </span>
+    </div>
   );
 };
 function Loading() {
@@ -120,17 +132,6 @@ function App() {
       <h1>Игра на запоминание</h1>
       <button onClick={shuffleCards}>Новая игра</button>
       <MyButton />
-      <div className="card-grid">
-        {cards.map((card) => (
-          <Card
-            key={card.id}
-            card={card}
-            handleChoice={handleChoice}
-            flipped={card === choiceOne || card === choiceTwo || card.matched}
-            disabled={disabled}
-          />
-        ))}
-      </div>
       {loading === false ? (
         <div className="card-grid">
           {cards.map((card) => (
