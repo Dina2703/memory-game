@@ -4,7 +4,7 @@ import Confetti from "react-confetti";
 import "./App.css";
 import Card from "./components/Card";
 import mainMusic from "./audio/main.mp3";
-import {SiApplemusic } from 'react-icons/si';
+import { SiApplemusic } from "react-icons/si";
 
 const cardImages = [
   { src: "./img/potion-2.png", matched: false },
@@ -20,8 +20,12 @@ const MyButton = () => {
   const [play, { stop }] = useSound(mainMusic);
 
   return (
-    <span onClick={() => play()} onDoubleClick={() => stop()} style={{'margin-left': '.5em', 'border': 'none'}} >
-     <SiApplemusic />
+    <span
+      onClick={() => play()}
+      onMouseDown={() => stop()}
+      style={{ "margin-left": ".5em", border: "none" }}
+    >
+      <SiApplemusic />
     </span>
   );
 };
@@ -118,7 +122,6 @@ function App() {
         ))}
       </div>
       <p>Turns: {turns}</p>
-     
     </div>
   );
 }
