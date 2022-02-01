@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import useSound from "use-sound";
 import Confetti from "react-confetti";
-
 import "./App.css";
 import Card from "./components/Card";
+import applauseSound from "./audio/main.mp3";
 
 const cardImages = [
   { src: "./img/potion-2.png", matched: false },
@@ -14,6 +15,15 @@ const cardImages = [
 ];
 
 // const audioTune = new Audio("./audio/apllause.mp3");
+const MyButton = () => {
+  const [play, { stop }] = useSound(applauseSound);
+
+  return (
+    <button onClick={() => play()} onDoubleClick={() => stop()}>
+      Play Sound
+    </button>
+  );
+};
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -107,6 +117,7 @@ function App() {
         ))}
       </div>
       <p>Turns: {turns}</p>
+      <MyButton />
     </div>
   );
 }
