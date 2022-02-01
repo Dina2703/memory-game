@@ -1,4 +1,5 @@
 import "./Card.css";
+
 function Card({ card, handleChoice, flipped, disabled }) {
   const handleClick = () => {
     !disabled && handleChoice(card);

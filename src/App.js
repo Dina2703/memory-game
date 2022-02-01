@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
-
+import { FaSpinner } from "react-icons/fa";
 import "./App.css";
 import Card from "./components/Card";
 
@@ -14,6 +14,13 @@ const cardImages = [
 ];
 
 // const audioTune = new Audio("./audio/apllause.mp3");
+function Loading() {
+  return (
+    <div>
+      <FaSpinner color="red" size={70} />
+    </div>
+  );
+}
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -22,6 +29,7 @@ function App() {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
   const [confettiStage, setConfettiStage] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   //shuffle cards
   const shuffleCards = () => {
@@ -57,7 +65,7 @@ function App() {
         });
         resetTurn();
       } else {
-        setTimeout(() => resetTurn(), 1000);
+        setTimeout(() => resetTurn(), 700);
       }
     }
   }, [choiceOne, choiceTwo]);
@@ -85,6 +93,7 @@ function App() {
 
   useEffect(() => {
     shuffleCards();
+    setTimeout(() => setLoading(false), 1000);
   }, []);
 
   return (
@@ -94,18 +103,21 @@ function App() {
       )}
       <h1>Игра на запоминание</h1>
       <button onClick={shuffleCards}>Новая игра</button>
-
-      <div className="card-grid">
-        {cards.map((card) => (
-          <Card
-            key={card.id}
-            card={card}
-            handleChoice={handleChoice}
-            flipped={card === choiceOne || card === choiceTwo || card.matched}
-            disabled={disabled}
-          />
-        ))}
-      </div>
+      {loading === false ? (
+        <div className="card-grid">
+          {cards.map((card) => (
+            <Card
+              key={card.id}
+              card={card}
+              handleChoice={handleChoice}
+              flipped={card === choiceOne || card === choiceTwo || card.matched}
+              disabled={disabled}
+            />
+          ))}
+        </div>
+      ) : (
+        <Loading />
+      )}
       <p>Turns: {turns}</p>
     </div>
   );
