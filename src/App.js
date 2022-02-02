@@ -9,7 +9,7 @@ import { MdOutlineMusicOff, MdOutlineMusicNote } from "react-icons/md";
 
 
 
-const photo = 1;
+  const photo = 2;
 
 const cardImages = [
   { src: `./img/potion-${photo}.png`, matched: false },
@@ -19,7 +19,6 @@ const cardImages = [
   { src: `/img/shield-${photo}.png`, matched: false },
   { src: `/img/sword-${photo}.png`, matched: false },
 ];
-
 
 
 // const audioTune = new Audio("./audio/apllause.mp3");
@@ -35,7 +34,7 @@ const MyButton = () => {
       }}
     >
       <span onClick={() => play()}>
-        <MdOutlineMusicNote style={{ padding: "2px" }} />
+        <MdOutlineMusicNote style={{ padding: "2px", paddingTop: '5px' }} />
       </span>
       <span onClick={() => stop()} style={{ border: "none" }}>
         <MdOutlineMusicOff style={{ padding: "2px" }} />
