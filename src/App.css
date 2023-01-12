@@ -1,6 +1,13 @@
+body {
+  overflow: hidden;
+}
+
 .App {
-  max-width: 860px;
-  margin: 40px auto;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 50px;
+  overflow: hidden;
+  height: 100vh;
 }
 
 button {
@@ -22,4 +29,7 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
+}
+.card-grid:hover {
+  cursor: pointer;
 }

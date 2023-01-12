@@ -123,28 +123,32 @@ function App() {
 
   return (
     <div className="App">
-      {confettiStage && (
-        <Confetti width={window.width} height={window.height} />
-      )}
-      <h1>Игра на запоминание</h1>
-      <button onClick={shuffleCards}>Новая игра</button>
-      <MyButton />
-      {loading === false ? (
-        <div className="card-grid">
-          {cards.map((card) => (
-            <Card
-              key={card.id}
-              card={card}
-              handleChoice={handleChoice}
-              flipped={card === choiceOne || card === choiceTwo || card.matched}
-              disabled={disabled}
-            />
-          ))}
-        </div>
-      ) : (
-        <Loading />
-      )}
-      <p>Turns: {turns}</p>
+      <div className="container">
+        {confettiStage && (
+          <Confetti width={window.width} height={window.height} />
+        )}
+        <h1>Memory Game</h1>
+        <button onClick={shuffleCards}>start game</button>
+        <MyButton />
+        {loading === false ? (
+          <div className="card-grid">
+            {cards.map((card) => (
+              <Card
+                key={card.id}
+                card={card}
+                handleChoice={handleChoice}
+                flipped={
+                  card === choiceOne || card === choiceTwo || card.matched
+                }
+                disabled={disabled}
+              />
+            ))}
+          </div>
+        ) : (
+          <Loading />
+        )}
+        <p>Turns: {turns}</p>
+      </div>
     </div>
   );
 }
