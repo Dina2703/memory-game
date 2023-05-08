@@ -8,6 +8,11 @@
   border-radius: 6px;
 }
 
+.card:hover {
+  cursor: pointer;
+  transform: scale(0.99);
+}
+
 /*front of card - the picture*/
 .card .front {
   transform: rotateY(90deg);
@@ -29,6 +34,6 @@
   transition-delay: 0s;
 }
 img {
-padding: 5px;
-background-color: rgb(191, 156, 91);
+  padding: 5px;
+  background-color: rgb(191, 156, 91);
 }

@@ -25,23 +25,27 @@ const MyButton = () => {
   return (
     <div
       style={{
-        display: "inline-block",
+        display: "flex",
+        gap: "8px",
+        borderRadius: "4px",
+        padding: "4px 12px",
+        alignItems: "center",
         background: "#b94e72",
-        marginLeft: "26px",
+        marginLeft: "28px",
       }}
     >
       <span onClick={() => play()}>
-        <MdOutlineMusicNote style={{ padding: "2px", paddingTop: "5px" }} />
+        <MdOutlineMusicNote />
       </span>
       <span onClick={() => stop()} style={{ border: "none" }}>
-        <MdOutlineMusicOff style={{ padding: "2px" }} />
+        <MdOutlineMusicOff />
       </span>
     </div>
   );
 };
 function Loading() {
   return (
-    <div>
+    <div style={{ marginTop: "3rem" }}>
       <FaSpinner color="red" size={70} />
     </div>
   );
@@ -127,9 +131,11 @@ function App() {
         {confettiStage && (
           <Confetti width={window.width} height={window.height} />
         )}
-        <h1>Memory Game</h1>
-        <button onClick={shuffleCards}>start game</button>
-        <MyButton />
+        <h2>Memory Game</h2>{" "}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <button onClick={shuffleCards}>start game</button>
+          <MyButton />
+        </div>
         {loading === false ? (
           <div className="card-grid">
             {cards.map((card) => (
